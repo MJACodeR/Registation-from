@@ -62,8 +62,6 @@ const GetUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const _id = req.params._id;
-    //   console.log(`id => ${_id}`);
-    // Use _id to find and delete the user
     const deletedUser = await empModel.findOneAndDelete({ _id });
     if (!deletedUser) {
       return res.status(404).send("User not found");
@@ -90,8 +88,7 @@ const GetAllUser = async (req, res) => {
 //GET USER BY ID
 const GetUserFind = async (req, res) => {
     try {
-      const _id = req.params._id; 
-        console.log(`id => ${_id}`);
+      const _id = req.params; 
       // Use _id to find and delete the user
       const GetUserByID = await empModel.findById(_id);
       console.log(GetUserByID)
@@ -108,20 +105,17 @@ const GetUserFind = async (req, res) => {
 
 
 //UPDATE BY ID
+// console.log('outside update');
 const UpdateUser = async (req, res) => {
-      console.log('hi')
-  const { id } = req.params._id;
-  const { username, email, phone } = req.body;
+  const { _id } = req.params;
   try {
-    const updatedUser = await empModel.findByIdAndUpdate(
-      id,
-      { username, email, phone },
-      { new: true }
-    );
+    const updatedUser = await empModel.findByIdAndUpdate(_id,{ username, email, phone },{ new: true });
     if (!updatedUser) {
       return res.status(404).json({ error: "User not found" });
     }
-    res.se(updatedUser);
+    else{
+      return res.send(updatedUser);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });

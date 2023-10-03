@@ -9,7 +9,7 @@ router.post("/signup",createUser);
 router.post("/login",GetUser);
 
 //GET ALL User information
-router.get("/", GetAllUser)
+router.get("/all", GetAllUser)
   
 //GET Single User
 router.get("/emp/:_id",GetUserFind);
@@ -18,7 +18,7 @@ router.get("/emp/:_id",GetUserFind);
 router.delete("/delete/:_id",deleteUser);
   
 //Update the student By it id
-router.patch("/update/:_id",UpdateUser);
+router.put("/update/:_id",UpdateUser);
 
 
 module.exports = router;
