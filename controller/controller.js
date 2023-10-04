@@ -61,8 +61,8 @@ const GetUser = async (req, res) => {
 //delete user
 const deleteUser = async (req, res) => {
   try {
-    const _id = req.params._id;
-    const deletedUser = await empModel.findOneAndDelete({ _id });
+    const id = req.params.id;
+    const deletedUser = await empModel.findOneAndDelete({ id });
     if (!deletedUser) {
       return res.status(404).send("User not found");
     } else {
@@ -88,9 +88,9 @@ const GetAllUser = async (req, res) => {
 //GET USER BY ID
 const GetUserFind = async (req, res) => {
     try {
-      const _id = req.params; 
-      // Use _id to find and delete the user
-      const GetUserByID = await empModel.findById(_id);
+      const id = req.params; 
+      // Use id to find and delete the user
+      const GetUserByID = await empModel.findById(id);
       console.log(GetUserByID)
       if (!GetUserByID) {
         return res.status(404).send("User not found");
@@ -107,9 +107,10 @@ const GetUserFind = async (req, res) => {
 //UPDATE BY ID
 // console.log('outside update');
 const UpdateUser = async (req, res) => {
-  const { _id } = req.params;
+  const { id } = req.params;
+  const { username, email, phone } = req.body
   try {
-    const updatedUser = await empModel.findByIdAndUpdate(_id,{ username, email, phone },{ new: true });
+    const updatedUser = await empModel.findByIdAndUpdate(id,{ username, email, phone },{ new: true });
     if (!updatedUser) {
       return res.status(404).json({ error: "User not found" });
     }

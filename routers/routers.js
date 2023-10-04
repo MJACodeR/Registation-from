@@ -3,22 +3,22 @@ const router = express.Router();
 const { createUser,GetUser,deleteUser,UpdateUser,GetUserFind,GetAllUser} = require('../controller/controller');
 
 //Create data
-router.post("/signup",createUser);
+router.post("/api/employee/signup",createUser);
   
 //GET Users
-router.post("/login",GetUser);
+router.post("/api/employee/login",GetUser);
 
 //GET ALL User information
-router.get("/all", GetAllUser)
+router.get("/api/employee/all", GetAllUser)
   
 //GET Single User
-router.get("/emp/:_id",GetUserFind);
+router.get("/api/employee/:id",GetUserFind);
   
 //Delete Data
-router.delete("/delete/:_id",deleteUser);
+router.delete("/api/employee/delete/:id",deleteUser);
   
 //Update the student By it id
-router.put("/update/:_id",UpdateUser);
+router.put("/api/employee/update/:id",UpdateUser);
 
 
 module.exports = router;
