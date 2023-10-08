@@ -90,7 +90,7 @@ const GetUserFind = async (req, res) => {
     try {
       const id = req.params; 
       // Use id to find and delete the user
-      const GetUserByID = await empModel.findById(id);
+      const GetUserByID = await empModel.findById({id});
       console.log(GetUserByID)
       if (!GetUserByID) {
         return res.status(404).send("User not found");
