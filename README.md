@@ -54,47 +54,61 @@ The server will run on `http://localhost:3000` by default. You can change the po
 
 #### Create a New Item
 
-- **Endpoint:** `/api/signup`
+- **Endpoint:** `/api/employee/signup`
 - **Method:** POST
 - **Request Body:**
   ```json
   {
     "username": "",
     "password": "",
-    "email":'',
+    "email":"",
     "phone":"",
   }
   ```
 - **Response:** Returns the created item.
 
+#### login item
+
+- **Endpoint:** `/api/employee/login`
+- **Method:** POST
+- **Request Body:**
+  ```json
+  {
+    "username": "",
+    "password": ""
+  }
+  ```
+- **Response:** Return login successful.
+
 #### Get All Items
 
-- **Endpoint:** `/api/GetAllUser`
+- **Endpoint:** `/api/employee/all`
 - **Method:** GET
 - **Response:** Returns a list of all items.
 
+
 #### Get an Item by ID
 
-- **Endpoint:** `/api/emp/:_id`
+- **Endpoint:** `/api/employee/:id`
 - **Method:** GET
 - **Response:** Returns the item with the specified ID.
 
 #### Update an Item by ID
 
-- **Endpoint:** `/api/Update/:_id`
+- **Endpoint:** `/api/employee/update/:id`
 - **Method:** PUT
 - **Request Body:** Updated item data.
 - **Response:** Returns the updated item.
 
 #### Delete an Item by ID
 
-- **Endpoint:** `/api/Delete/:_id`
+- **Endpoint:** `/api/employee/delete/:id`
 - **Method:** DELETE
 - **Response:** Returns a success message upon deletion.
 
 ### Authentication and Authorization
 
-- Authentication is implemented using JSON Web Tokens (JWT).
+- Authentication is implemented using bcrypt.
 - Authorization is required for certain endpoints.
 
 ### Validation
