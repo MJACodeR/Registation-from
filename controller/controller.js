@@ -74,6 +74,25 @@ const deleteUser = async (req, res) => {
   }
 };
 
+//GET USER BY ID
+const GetUserFind = async (req, res) => {
+  try {
+    const id = req.params.id; 
+    // Use id to find and delete the user
+    const GetUserByID = await empModel.findById(id);
+    console.log(GetUserByID)
+    if (!GetUserByID) {
+      return res.status(404).send("User not found");
+    } else {
+      res.send(GetUserByID);
+      console.log("Data fetch successfully...");
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
+
 
 //GET ALL USER
 const GetAllUser = async (req, res) => {
@@ -84,25 +103,6 @@ const GetAllUser = async (req, res) => {
       res.status(400).send(error);
     }
   };
-
-//GET USER BY ID
-const GetUserFind = async (req, res) => {
-    try {
-      const id = req.params.id; 
-      // Use id to find and delete the user
-      const GetUserByID = await empModel.findById({id});
-      console.log(GetUserByID)
-      if (!GetUserByID) {
-        return res.status(404).send("User not found");
-      } else {
-        res.send(GetUserByID);
-        console.log("Data fetch successfully...");
-      }
-    } catch (error) {
-      res.status(400).send(error);
-    }
-  };
-
 
 //UPDATE BY ID
 // console.log('outside update');
