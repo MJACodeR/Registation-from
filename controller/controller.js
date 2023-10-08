@@ -88,7 +88,7 @@ const GetAllUser = async (req, res) => {
 //GET USER BY ID
 const GetUserFind = async (req, res) => {
     try {
-      const id = req.params; 
+      const id = req.params.id; 
       // Use id to find and delete the user
       const GetUserByID = await empModel.findById({id});
       console.log(GetUserByID)
